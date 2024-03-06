@@ -1,0 +1,21 @@
+	.data 
+	.text
+
+main:	li $v0, 5 		# Lê o primeiro inteiro
+	syscall 		# Executa o comando de leitura
+	move $t0, $v0		# Move o valor atribuido ao registrador v0 para o temporario t0
+		
+	li $v0, 5		# Lê o segundo inteiro
+	syscall 		# Executa o comando de leitura
+	move $t1, $v0		# Move o valor atribuido ao registrador v0 para o temporario t1
+	
+	add $t2, $t0, $t1	# Soma os valores de t0 e t1 e atribui a t2
+	
+
+	
+	li $v0, 1		# Cria registrador que irá receber o valor da soma de t0 e t1
+	move $a0, $t2		# Atribui o valor de t2 (t0 + t1) ao a0
+	syscall 		# Imprime o resultado da soma
+	
+	li $v0, 10		# Return 0
+	syscall 

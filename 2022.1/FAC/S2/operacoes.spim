@@ -1,0 +1,150 @@
+        .data
+sadd:   .asciiz "ADD: "
+ssub:   .asciiz "SUB: "
+sline:  .asciiz "\n"
+sand:   .asciiz "AND: "
+sor:    .asciiz "OR: "
+sxor:   .asciiz "XOR: "
+smask:  .asciiz "MASK: "
+ssll:   .asciiz "SLL("
+ssrl:   .asciiz "SRL("
+sprnt:  .asciiz "): "
+
+        .text
+main:   
+        li $v0, 5 # Lê um número inteiro
+        syscall # Chama o sistema para ler o número inteiro
+        move $t0, $v0 # Move o valor lido para $t0, inteiro 1
+
+        li $v0, 5 # Lê um número inteiro
+        syscall # Chama o sistema para ler o número inteiro
+        move $t1, $v0 # Move o valor lido para $t1, inteiro 2
+
+        li $v0, 5 # Lê um número inteiro
+        syscall # Chama o sistema para ler o número inteiro
+        move $t2, $v0 # Move o valor lido para $t2, inteiro 3
+
+        add $s0, $t0, $t1 # Soma $t0 e $t1 e move o resultado para $s0
+        sub $s1, $t0, $t1 # Subtrai $t0 e $t1 e move o resultado para $s1
+        and $s2, $t0, $t1 # Faz o AND entre $t0 e $t1 e move o resultado para $s2
+        or $s3, $t0, $t1 # Faz o OR entre $t0 e $t1 e move o resultado para $s3
+        xor $s4, $t0, $t1 # Faz o XOR entre $t0 e $t1 e move o resultado para $s4
+        and $s5, $t2, 31 # Faz o MASK de $t2 e move o resultado para $s5
+        sll $s6, $t0, $s5 # Faz o SLL de $t0 e move o resultado para $s6
+        srlv $s7, $t1, $s5 # Faz o SRL de $t0 e move o resultado para $s7
+
+        li $v0, 4 
+        la $a0, sadd # Ponteiro para a string "ADD: "
+        syscall # Chama o sistema para escrever a string "ADD: "
+
+        li $v0, 1 # Escreve o valor de $s0 na tela
+        move $a0, $s0 # Move o valor de $s0 para $a0
+        syscall # Chama o sistema para escrever o valor da soma na tela
+
+        li $v0, 4
+        la $a0, sline # Ponteiro para a string "\n"
+        syscall # Chama o sistema para escrever a string "\n"
+
+        li $v0, 4
+        la $a0, ssub # Ponteiro para a string "SUB: "
+        syscall # Chama o sistema para escrever a string "SUB: "
+
+        li $v0, 1 # Escreve o valor de $s1 na tela
+        move $a0, $s1 # Move o valor de $s1 para $a0
+        syscall # Chama o sistema para escrever o valor da subtração na tela
+
+        li $v0, 4
+        la $a0, sline # Ponteiro para a string "\n"
+        syscall # Chama o sistema para escrever a string "\n"
+
+        li $v0, 4
+        la $a0, sand # Ponteiro para a string "AND: "
+        syscall # Chama o sistema para escrever a string "AND: "
+
+        li $v0, 1 # Escreve o valor de $s2 na tela
+        move $a0, $s2 # Move o valor de $s2 para $a0
+        syscall # Chama o sistema para escrever o valor do AND na tela
+
+        li $v0, 4
+        la $a0, sline # Ponteiro para a string "\n"
+        syscall # Chama o sistema para escrever a string "\n"
+
+        li $v0, 4
+        la $a0, sor # Ponteiro para a string "OR: "
+        syscall # Chama o sistema para escrever a string "OR: "
+
+        li $v0, 1 # Escreve o valor de $s3 na tela
+        move $a0, $s3 # Move o valor de $s3 para $a0
+        syscall # Chama o sistema para escrever o valor do OR na tela
+
+        li $v0, 4
+        la $a0, sline # Ponteiro para a string "\n"
+        syscall # Chama o sistema para escrever a string "\n"
+
+        li $v0, 4
+        la $a0, sxor # Ponteiro para a string "XOR: "
+        syscall # Chama o sistema para escrever a string "XOR: "
+
+        li $v0, 1 # Escreve o valor de $s4 na tela
+        move $a0, $s4 # Move o valor de $s4 para $a0
+        syscall # Chama o sistema para escrever o valor do XOR na tela
+
+        li $v0, 4
+        la $a0, sline # Ponteiro para a string "\n"
+        syscall # Chama o sistema para escrever a string "\n"
+
+        li $v0, 4
+        la $a0, smask # Ponteiro para a string "MASK: "
+        syscall # Chama o sistema para escrever a string "MASK: "
+
+        li $v0, 1 # Escreve o valor de $s5 na tela
+        move $a0, $s5 # Move o valor de $s5 para $a0
+        syscall # Chama o sistema para escrever o valor do MASK na tela
+
+        li $v0, 4
+        la $a0, sline # Ponteiro para a string "\n"
+        syscall # Chama o sistema para escrever a string "\n"
+
+        li $v0, 4
+        la $a0, ssll # Ponteiro para a string "SLL("
+        syscall # Chama o sistema para escrever a string "SLL("
+
+        li $v0, 1 # Escreve o valor de $s5 na tela
+        move $a0, $s5 # Move o valor de $s5 para $a0
+        syscall # Chama o sistema para escrever o valor do MASK na tela
+
+        li $v0, 4
+        la $a0, sprnt # Ponteiro para a string "): "
+        syscall # Chama o sistema para escrever a string "): "
+
+        li $v0, 1 # Escreve o valor de $s6 na tela
+        move $a0, $s6 # Move o valor de $s6 para $a0
+        syscall # Chama o sistema para escrever o valor do SLL na tela
+
+        li $v0, 4
+        la $a0, sline # Ponteiro para a string "\n"
+        syscall # Chama o sistema para escrever a string "\n"
+
+        li $v0, 4
+        la $a0, ssrl # Ponteiro para a string "SRLV("
+        syscall # Chama o sistema para escrever a string "SRLV("
+
+        li $v0, 1 # Escreve o valor de $s5 na tela
+        move $a0, $s5 # Move o valor de $s5 para $a0
+        syscall # Chama o sistema para escrever o valor do MASK na tela
+
+        li $v0, 4
+        la $a0, sprnt # Ponteiro para a string "): "
+        syscall # Chama o sistema para escrever a string "): "
+
+        li $v0, 1 # Escreve o valor de $s7 na tela
+        move $a0, $s7 # Move o valor de $s7 para $a0
+        syscall # Chama o sistema para escrever o valor do SRLV na tela
+
+        li $v0, 4
+        la $a0, sline # Ponteiro para a string "\n"
+        syscall # Chama o sistema para escrever a string "\n"
+
+        li $v0, 10
+        syscall # Chama o sistema para encerrar o programa
+

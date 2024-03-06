@@ -1,0 +1,10 @@
+	.data
+str1: 	.ascii "Ola Mundo\n"
+
+	.text 
+main:	li $v0, 4	# Comando para imprimir caracteres
+	la $a0, str1	# Atribui o conteudo da string1 ai registrador a0
+	syscall 
+	
+	li $v0, 10	# Return 0
+	syscall 
