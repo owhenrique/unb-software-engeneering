@@ -1,0 +1,37 @@
+{
+    "ip_central": "localhost", 
+    "porta_central": 10031,
+    "floor_id": 3,
+    "output": [
+        {
+            "name": "ENDERECO_01",
+            "gpio": 9
+        },
+        {
+            "name": "ENDERECO_02",
+            "gpio": 11
+        },
+        {
+            "name": "ENDERECO_03",
+            "gpio": 15
+        },
+        {
+            "name": "SINAL_DE_LOTADO_FECHADO_3",
+            "gpio": 14
+        }
+    ],
+    "input": [
+        {
+            "name": "SENSOR_DE_VAGA",
+            "gpio": 1
+        },
+        {
+            "name": "SENSOR_DE_PASSAGEM_1",
+            "gpio": 0
+        },
+        {
+            "name": "SENSOR_DE_PASSAGEM_2",
+            "gpio": 7
+        }
+    ]
+}
